@@ -20,3 +20,31 @@ char words[rows][cols] = {{'t','g','b','w','w','i','n','t','e','r','w','s','e','
                            {'m','o','s','g','z','c','z','e','t','d','b','o','o','t' ,'o'},
                            {'p','d','c','r','z','m','s','n','g','r','d','n','r','p','z'},
                            {'o','h','n','k','z','w','a','t','e','r','j','g','t','r','a'}};
+
+
+bool searchHorizontal(char word[]){
+	char *check;
+	char dataHurufAcak[15];
+	
+	for (int i = 0; i < 15; i++)
+    {
+        check = strstr(words[i], word);
+        
+	    if(check != NULL){
+	        return true;
+	    }
+
+		for (int j = 0; j < 15; j++)
+		{
+			dataHurufAcak[j] = words[i][j];
+		}
+		
+		reverse(dataHurufAcak, dataHurufAcak + strlen(dataHurufAcak));
+
+		if(strstr(dataHurufAcak, word) != NULL){
+	        return true;
+	    }
+    }
+    
+    return false;
+}
