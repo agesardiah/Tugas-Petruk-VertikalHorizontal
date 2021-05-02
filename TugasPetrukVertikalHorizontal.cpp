@@ -33,6 +33,7 @@ bool searchHorizontal(char word[]){
 	    if(check != NULL){
 	        return true;
 	    }
+		
 
 		for (int j = 0; j < 15; j++)
 		{
@@ -48,3 +49,38 @@ bool searchHorizontal(char word[]){
     
     return false;
 }
+
+bool searchVertical(char word[]){
+	char dataHurufAcak[15];
+	
+	for (int i = 0; i < 15; i++)
+    {
+        for (int j = 0; j < 15; j++)
+        {
+            dataHurufAcak[j] = words[j][i];
+        }
+        
+        if(strstr(dataHurufAcak, word) != NULL){
+	        return true;
+	    }
+
+		//cout << dataHurufAcak << " : ";
+		reverse(dataHurufAcak, dataHurufAcak + 15);
+
+		if(strstr(dataHurufAcak, word) != NULL){
+	        return true;
+	    }
+    }
+    
+    return false;
+}
+
+int main()
+{
+    char word[16];
+    int n;
+    cin>>n;
+    cin.ignore();
+    for (int i=0;i<n;i++){
+        cin.getline(word,16,'\n');
+        
